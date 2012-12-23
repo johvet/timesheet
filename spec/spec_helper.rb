@@ -12,9 +12,9 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
   # This should actually be covered by 'capybara/rspec'
-  # FIXME: investigate why it does not work!
-  config.include Capybara::DSL
-  config.include Capybara::RSpecMatchers
+  # unless you put your capybara specs into spec/features add these lines
+  # config.include Capybara::DSL
+  # config.include Capybara::RSpecMatchers
 
   # ## Mock Framework
   #
