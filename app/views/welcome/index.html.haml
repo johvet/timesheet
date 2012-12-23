@@ -1,0 +1,36 @@
+.hero-unit.hidden-phone
+  %h1 Welcome to Timesheets
+  %p
+    We do lots of things that will make you give us money. Lots of money.
+  %p
+    = link_to new_user_registration_url, :class => "btn btn-large btn-inverse" do
+      %span.btn-label Sign Up Today!
+
+= link_to new_user_registration_url, :class => "btn btn-large btn-primary btn-block visible-phone" do
+  %span.btn-label Sign Up Today!
+
+.row.main-features
+  .span4
+    .well
+      %h3 Already Signed Up?
+      %p
+        So you are already signed up with us - great!
+        Don't wait and sign in.
+      = link_to new_user_session_path, :class => "btn btn-primary" do
+        %span.btn-label Sign In Now
+  .span4
+    .well
+      %h3 Awesome Feature #1
+      %p
+        Enter a brief description of why it's so awesome here. Then move on to
+        the next feature.
+      %a.btn.btn-primary(href="/")
+        %span.btn-label Find Out More
+  .span4
+    .well
+      %h3 Awesome Feature #1
+      %p
+        Enter a brief description of why it's so awesome here. Then move on to
+        the next feature.
+      %a.btn.btn-primary(href="/")
+        %span.btn-label Find Out More

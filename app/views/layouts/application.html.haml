@@ -18,35 +18,31 @@
 
 
   %body
-    .navbar.navbar-fluid-top
+    .navbar.navbar-fixed-top.navbar-inverse
       .navbar-inner
-        .container-fluid
-          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.brand(href="#") Timesheet
-          .container.nav-collapse
+        .container
+          %a.brand(href="#") Timesheets
+
+          .navbar-content
             %ul.nav
               %li= link_to "Link 1", "/path1"
               %li= link_to "Link 2", "/path2"
               %li= link_to "Link 3", "/path3"
+            .pull-right
+              %ul.nav
+                %li
+                  - if user_signed_in?
+                    = link_to destroy_user_session_path, :method => :delete do
+                      Logout #{current_user.email}
+                  - else
+                    Not logged in
 
-    .container-fluid
+    .container.main
+      = bootstrap_flash
+      = yield
 
-      .row-fluid
-        .span3
-          .well.sidebar-nav
-            %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
-        .span9
-          = yield
-    
       %footer
-        %p &copy; Company 2012
+        %p &copy; jvse 2012
     /
       Javascripts
       \==================================================

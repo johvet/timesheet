@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121223052825) do
+ActiveRecord::Schema.define(:version => 20121223180340) do
+
+  create_table "customers", :force => true do |t|
+    t.string   "name"
+    t.text     "comment"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+  end
+
+  add_index "customers", ["name"], :name => "customer_name_is_unique_index", :unique => true
+  add_index "customers", ["user_id"], :name => "customer_belongs_to_user_index"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
