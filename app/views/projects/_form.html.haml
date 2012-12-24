@@ -1,0 +1,15 @@
+= simple_form_for @project, :html => {:class => "form-horizontal"} do |f|
+  = render :partial => "shared/form_errors", :object => @project
+
+  .control-group
+    = f.label :title
+    .controls
+      = f.text_field :title, :class => "input-xxlarge"
+  = f.association :customer
+  .control-group
+    = f.label :comment
+    .controls
+      = f.text_area :comment, :class => "input-xxlarge", :rows => 4, :cols => 80
+  .form-actions
+    = f.submit 'Save', :class => "btn btn-primary"
+    = link_to "Back", projects_path, :class => "btn"

@@ -1,0 +1,7 @@
+- if form_errors.errors.any?
+  #error_explanation.alert.alert-error
+    %button.close{:data => {:dismiss => "alert"}} &times;
+    %b= "#{pluralize(form_errors.errors.count, "error")} prohibited this customer from being saved:"
+    %ul
+      - form_errors.errors.full_messages.each do |msg|
+        %li= msg

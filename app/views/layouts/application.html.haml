@@ -14,20 +14,28 @@
     %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114")
     %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72")
     %link(href="images/apple-touch-icon.png" rel="apple-touch-icon-precomposed")
-    %link(href="images/favicon.ico" rel="shortcut icon")
+    %link(href="/favicon.ico" rel="shortcut icon")
 
 
   %body
     .navbar.navbar-fixed-top.navbar-inverse
       .navbar-inner
         .container
-          %a.brand(href="#") Timesheets
+          %a.brand(href="#{root_url}") Timesheets
 
           .navbar-content
             %ul.nav
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+              %li= link_to "Sheets", "/path1"
+              %li= link_to "Reports", "/path2"
+              %li.divider-vertical
+              %li.dropdown
+                %a.dropdown-toggle{href: "#", data: {toggle: "dropdown"}}
+                  Stuff
+                  %b.caret
+                %ul.dropdown-menu
+                  %li= link_to I18n.t('main_navigation.customers'), customers_path
+                  %li= link_to I18n.t('main_navigation.projects'), projects_path
+
             .pull-right
               %ul.nav
                 %li
@@ -35,7 +43,7 @@
                     = link_to destroy_user_session_path, :method => :delete do
                       Logout #{current_user.email}
                   - else
-                    Not logged in
+                    = link_to "Sign In", new_user_session_path
 
     .container.main
       = bootstrap_flash

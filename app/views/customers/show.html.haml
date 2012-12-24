@@ -7,6 +7,5 @@
   %b Comment:
   = @customer.comment
 
-= link_to 'Edit', edit_customer_path(@customer)
-\|
-= link_to 'Back', customers_path
+= link_to 'Edit', edit_customer_path(@customer), class: "btn btn-primary"
+= link_to 'Back', customers_path, class: "btn"
