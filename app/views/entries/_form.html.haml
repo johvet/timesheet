@@ -1,0 +1,11 @@
+= simple_form_for @entry, :html => {:class => "form-horizontal"} do |f|
+  = render :partial => "shared/form_errors", :object => @entry
+
+  .form-inputs
+    = f.association :project, :collection => current_user.projects, :input_html => {:class => "input-xxlarge"}
+    = f.association :activity, :collection => current_user.activities, :input_html => {:class => "input-xxlarge"}
+    = f.input :executed_on, :input_html => {:class => "input-xlarge"}
+    = f.input :description, :rows => 5, :cols => 80, :input_html => {:class => "input-xxlarge"}
+
+  .form-actions
+    = f.button :submit

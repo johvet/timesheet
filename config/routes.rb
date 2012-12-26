@@ -1,10 +1,12 @@
 Timesheet::Application.routes.draw do
+  devise_for :users
+
   resources :projects
 
   resources :customers
   resources :activities
 
-  devise_for :users
+  resources :entries
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

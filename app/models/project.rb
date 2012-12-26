@@ -4,6 +4,8 @@ class Project < ActiveRecord::Base
   belongs_to :customer
   belongs_to :user
 
+  has_many :entries
+
   validates_presence_of :title, :customer, :user
   validates_uniqueness_of :title
 

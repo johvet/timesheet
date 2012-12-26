@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121225204720) do
+ActiveRecord::Schema.define(:version => 20121226011837) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -34,6 +34,23 @@ ActiveRecord::Schema.define(:version => 20121225204720) do
 
   add_index "customers", ["name"], :name => "customer_name_is_unique_index", :unique => true
   add_index "customers", ["user_id"], :name => "customer_belongs_to_user_index"
+
+  create_table "entries", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.integer  "activity_id"
+    t.datetime "ticker_start_at"
+    t.datetime "ticker_end_at"
+    t.integer  "duration"
+    t.date     "executed_on"
+    t.text     "description"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "entries", ["activity_id"], :name => "index_entries_on_activity_id"
+  add_index "entries", ["project_id"], :name => "index_entries_on_project_id"
+  add_index "entries", ["user_id"], :name => "index_entries_on_user_id"
 
   create_table "projects", :force => true do |t|
     t.string   "title",       :null => false

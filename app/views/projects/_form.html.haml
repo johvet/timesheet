@@ -5,7 +5,7 @@
     = f.label :title
     .controls
       = f.text_field :title, :class => "input-xxlarge"
-  = f.association :customer
+  = f.association :customer, :collection => current_user.customers
   .control-group
     = f.label :comment
     .controls
