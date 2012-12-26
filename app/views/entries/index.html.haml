@@ -1,19 +1,28 @@
-%h1 Listing entries
+%h1
+  Listing entries for
+  = @date.to_s
 
-%table
-  %tr
-    %th Entry
-    %th
-    %th
-    %th
+.row
+  .span9
+    %table
+      %tr
+        %th Entry
+        %th
+        %th
+        %th
 
-  - @entries.each do |entry|
-    %tr
-      %td= entry.project.title
-      %td= link_to 'Show', entry
-      %td= link_to 'Edit', edit_entry_path(entry)
-      %td= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' }
+      - @entries.each do |entry|
+        %tr
+          %td= entry.project.title
+          %td= link_to 'Show', entry
+          %td= link_to 'Edit', edit_entry_path(entry)
+          %td= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' }
 
-%br
+  .span3
+    #datepicker{data: {url: "#{entries_path}", current: "#{@date.to_s(:iso)}"}}
 
-= link_to 'New Entry', new_entry_path
+
+
+.row
+  .span12
+    = link_to 'New Entry', new_entry_path, :class => "btn btn-primary", :id => "new-entry"

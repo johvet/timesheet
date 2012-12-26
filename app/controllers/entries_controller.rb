@@ -2,8 +2,8 @@ class EntriesController < AuthenticatedController
   # GET /entries
   # GET /entries.json
   def index
-    date = params[:date].to_date rescue Time.zone.today
-    @entries = current_user.entries.where(:executed_on => date)
+    @date = params[:date].to_date rescue Time.zone.today
+    @entries = current_user.entries.where(:executed_on => @date)
 
     respond_to do |format|
       format.html # index.html.erb
