@@ -17,5 +17,24 @@ class EntryDateChanger
       href = $(event.target).attr('href')
       $(event.target).attr('href', "#{href}?when=#{@picker$.val()}")
 
+    $(".toggle-ticker").bind 'click', (event) =>
+      event.preventDefault()
+      event.stopPropagation()
+
+      @toggle_ticker($(event.currentTarget))
+
+
+  toggle_ticker: (link$) ->
+    url = link$.closest('form').attr('action')
+    $.ajax url,
+      type: 'PUT'
+      dataType: 'json'
+      data: {_method: "put"}
+      success: (result) ->
+        console.log "TAht worked great! #{result}"
+      error: (xhr, status, error) ->
+        console.log "that did not work: #{status}"
+    console.log "Toggling this thicker: #{url}", link$
+
 if gon.controller == 'entries'
   new EntryDateChanger()

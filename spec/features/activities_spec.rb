@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'Activities' do
   context "As a logged in User" do
     before :each do
-      @user = FactoryGirl.create(:user, email: "foo@bar.com")
+      @user = FactoryGirl.create(:user)
       visit new_user_session_path
       fill_in "Email", :with => @user.email
       fill_in "Password", :with => @user.password

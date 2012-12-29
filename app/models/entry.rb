@@ -1,5 +1,5 @@
 class Entry < ActiveRecord::Base
-  attr_accessible :activity_id, :description, :duration, :project_id, :executed_on, :ticker_start_at, :ticker_end_at, :user_id
+  attr_accessible :activity_id, :description, :duration, :project_id, :executed_on, :ticker_start_at, :ticker_end_at, :user_id, :string_duration
 
   belongs_to :user
   belongs_to :project
@@ -17,6 +17,18 @@ class Entry < ActiveRecord::Base
       result += (stop - start).to_i
     end
     result
+  end
+
+  def string_duration
+    self.duration.to_time rescue 0.to_time
+  end
+
+  def string_duration=(value)
+    self.duration = value.from_time
+  end
+
+  def active?
+    self.ticker_start_at.present?
   end
 
   private

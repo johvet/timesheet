@@ -41,11 +41,11 @@ ActiveRecord::Schema.define(:version => 20121226011837) do
     t.integer  "activity_id"
     t.datetime "ticker_start_at"
     t.datetime "ticker_end_at"
-    t.integer  "duration"
+    t.integer  "duration",        :default => 0
     t.date     "executed_on"
     t.text     "description"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   add_index "entries", ["activity_id"], :name => "index_entries_on_activity_id"

@@ -34,6 +34,7 @@ gem 'jquery-ui-rails'
 group :test, :development do
   gem "rspec-rails"
   gem "rb-fsevent"
+  gem "database_cleaner"
 end
 
 group :test do
@@ -42,7 +43,6 @@ group :test do
   gem "guard-rspec"
 
   gem "cucumber-rails", :require => false
-  gem "database_cleaner"
 end
 
 # To use ActiveModel has_secure_password

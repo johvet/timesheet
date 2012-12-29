@@ -1,6 +1,18 @@
 require 'spec_helper'
 
 describe Entry do
+  context "entry state" do
+    it "should report an entry w/o a ticker as not active" do
+      entry = Entry.new({duration: 15, ticker_start_at: nil, ticker_end_at: nil})
+      entry.should_not be_active
+    end
+
+    it "should report an entry with a ticker as active" do
+      entry = Entry.new({duration: 15, ticker_start_at: 1.minute.ago, ticker_end_at: nil})
+      entry.should be_active
+    end
+  end
+
   context "total_duration" do
     before :each do
       @customer = FactoryGirl.create(:customer)

@@ -6,7 +6,12 @@ Timesheet::Application.routes.draw do
   resources :customers
   resources :activities
 
-  resources :entries
+  resources :entries do
+    member do
+      put 'start'
+      put 'stop'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

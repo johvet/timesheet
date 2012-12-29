@@ -82,4 +82,34 @@ class EntriesController < AuthenticatedController
       format.json { head :no_content }
     end
   end
+
+  def start
+    @entry = current_user.entries.find(params[:id])
+    @entry.ticker_start_at = Time.zone.now
+
+    respond_to do |format|
+      if @entry.save
+        format.html { redirect_to @entry, notice: 'Entry was successfully started'}
+        format.json { head :no_content}
+      else
+        format.html { render action: "edit"}
+        format.json { render json: @entry.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def stop
+    @entry = current_user.entries.find(params[:id])
+    @entry.ticker_end_at = Time.zone.now
+
+    respond_to do |format|
+      if @entry.save
+        format.html { redirect_to @entry, notice: 'Entry was successfully halted'}
+        format.json { head :no_content}
+      else
+        format.html { render action: "edit"}
+        format.json { render json: @entry.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 end

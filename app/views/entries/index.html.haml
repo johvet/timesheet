@@ -4,19 +4,34 @@
 
 .row
   .span9
-    %table
+    %table.table.table-striped
       %tr
         %th Entry
-        %th
-        %th
-        %th
+        %th Time
+        %th Actions
 
       - @entries.each do |entry|
         %tr
-          %td= entry.project.title
-          %td= link_to 'Show', entry
-          %td= link_to 'Edit', edit_entry_path(entry)
-          %td= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' }
+          %td
+            = entry.project.customer.name
+            /
+            = entry.project.title
+            /
+            = entry.activity.name
+            .description
+              = entry.description
+          %td
+            %span.ticker{data: {id: entry.id, current: entry.total_duration}}
+              = entry.string_duration
+          %td
+            - if entry.active?
+              = button_to "Stop", stop_entry_path(entry), :class => "btn btn-warning toggle-ticker", method: :put
+            - else
+              = button_to "Start", start_entry_path(entry), :class => "btn btn-warning toggle-ticker", method: :put
+
+            = link_to 'Show', entry
+            = link_to 'Edit', edit_entry_path(entry)
+            = link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' }
 
   .span3
     #datepicker{data: {url: "#{entries_path}", current: "#{@date.to_s(:iso)}"}}
