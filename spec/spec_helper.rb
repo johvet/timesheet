@@ -27,19 +27,24 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  # config.use_transactional_fixtures = true
-  config.use_transactional_fixtures = false
 
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
-  end
+  if ENV['RUN_JS_SPECS'] == 'yes'
+    config.use_transactional_fixtures = false
 
-  config.before(:each) do
-    DatabaseCleaner.start
-  end
+    config.before(:suite) do
+      DatabaseCleaner.strategy = :truncation
+    end
 
-  config.after(:each) do
-    DatabaseCleaner.clean
+    config.before(:each) do
+      DatabaseCleaner.start
+    end
+
+    config.after(:each) do
+      DatabaseCleaner.clean
+    end
+  else
+    config.use_transactional_fixtures = true
+    config.filter_run_excluding :js => true
   end
 
   # If true, the base class of anonymous controllers will be inferred
