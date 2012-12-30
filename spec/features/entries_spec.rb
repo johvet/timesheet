@@ -35,17 +35,16 @@ describe "Entries" do
 
     it "should start ticking the timer", :js => true do
       visit entries_path
-      page.find('.toggle-ticker').click
-      @entry.reload.should be_active
+      page.find("#entry_#{@entry.id} .toggle").click
+      page.should have_css('.ticker.ticking')
     end
 
     it "should stop a ticking entry", :js => true do
       @entry.ticker_start_at = 5.minutes.ago
       @entry.save
       visit entries_path
-      page.find(".toggle-ticker").click
-      @entry.reload.should_not be_active
-      @entry.duration.should eq(450)
+      page.find("#entry_#{@entry.id} .toggle").click
+      page.should have_no_css('.ticker.ticking')
     end
   end
 

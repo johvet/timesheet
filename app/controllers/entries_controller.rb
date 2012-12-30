@@ -46,7 +46,7 @@ class EntriesController < AuthenticatedController
 
     respond_to do |format|
       if @entry.save
-        format.html { redirect_to @entry, notice: 'Entry was successfully created.' }
+        format.html { redirect_to entries_path(:date => @entry.executed_on), notice: 'Entry was successfully created.' }
         format.json { render json: @entry, status: :created, location: @entry }
       else
         format.html { render action: "new" }
@@ -62,7 +62,7 @@ class EntriesController < AuthenticatedController
 
     respond_to do |format|
       if @entry.update_attributes(params[:entry])
-        format.html { redirect_to @entry, notice: 'Entry was successfully updated.' }
+        format.html { redirect_to entries_path(:date => @entry.executed_on), notice: 'Entry was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -83,32 +83,19 @@ class EntriesController < AuthenticatedController
     end
   end
 
-  def start
+  def toggle
     @entry = current_user.entries.find(params[:id])
-    @entry.ticker_start_at = Time.zone.now
-
-    respond_to do |format|
-      if @entry.save
-        format.html { redirect_to @entry, notice: 'Entry was successfully started'}
-        format.json { head :no_content}
-      else
-        format.html { render action: "edit"}
-        format.json { render json: @entry.errors, status: :unprocessable_entity }
-      end
+    if @entry.active?
+      @entry.ticker_end_at = Time.zone.now
+    else
+      @entry.ticker_start_at = Time.zone.now
     end
-  end
 
-  def stop
-    @entry = current_user.entries.find(params[:id])
-    @entry.ticker_end_at = Time.zone.now
-
-    respond_to do |format|
-      if @entry.save
-        format.html { redirect_to @entry, notice: 'Entry was successfully halted'}
-        format.json { head :no_content}
-      else
-        format.html { render action: "edit"}
-        format.json { render json: @entry.errors, status: :unprocessable_entity }
+    if @entry.save
+      respond_to do |format|
+        format.html { redirect_to entries_path(:date => @entry.executed_on), notice: 'Entry toggled successfully' }
+        format.json { render json: @entry }
+        format.js
       end
     end
   end

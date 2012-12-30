@@ -4,11 +4,11 @@
 
 .row
   .span9
-    %table.table.table-striped
+    %table.table.table-striped.entries
       %tr
         %th Entry
         %th Time
-        %th Actions
+        %th.actions Actions
 
       - @entries.each do |entry|
         %tr
@@ -21,17 +21,16 @@
             .description
               = entry.description
           %td
-            %span.ticker{data: {id: entry.id, current: entry.total_duration}}
-              = entry.string_duration
-          %td
-            - if entry.active?
-              = button_to "Stop", stop_entry_path(entry), :class => "btn btn-warning toggle-ticker", method: :put
-            - else
-              = button_to "Start", start_entry_path(entry), :class => "btn btn-warning toggle-ticker", method: :put
+            %span.ticker{class: "#{entry.active? ? 'ticking' : ''}", data: {id: entry.id, current: entry.total_duration}}
+              = entry.total_duration.to_time
 
-            = link_to 'Show', entry
-            = link_to 'Edit', edit_entry_path(entry)
-            = link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' }
+          %td.actions
+            = render :partial => "entry_time", :object => entry
+
+            = link_to edit_entry_path(entry) do
+              %i.icon.icon-pencil
+            = link_to entry, method: :delete, data: { confirm: 'Are you sure?' } do
+              %i.icon.icon-remove
 
   .span3
     #datepicker{data: {url: "#{entries_path}", current: "#{@date.to_s(:iso)}"}}

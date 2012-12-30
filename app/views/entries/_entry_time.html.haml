@@ -1,0 +1,4 @@
+= content_tag_for(:span, entry_time, class: "#{entry_time.active? ? 'started' : 'stopped'}", data: {duration: entry_time.total_duration}) do
+
+  = link_to toggle_entry_path(entry_time), remote: true, method: :put, class: "toggle" do
+    %i.icon{class: "#{entry_time.active? ? 'icon-stop' : 'icon-time'}"}

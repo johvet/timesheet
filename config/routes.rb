@@ -8,8 +8,7 @@ Timesheet::Application.routes.draw do
 
   resources :entries do
     member do
-      put 'start'
-      put 'stop'
+      put 'toggle'
     end
   end
 

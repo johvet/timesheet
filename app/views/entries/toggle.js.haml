@@ -1,0 +1,3 @@
+$("#entry_#{@entry.id}").replaceWith('#{j render :partial => "entry_time", :object => @entry}');
+$('.ticker[data-id=#{@entry.id}]').toggleClass('ticking', #{@entry.active?.to_s});
+new EntryTicker(#{@entry.id}, #{@entry.active?.to_s})

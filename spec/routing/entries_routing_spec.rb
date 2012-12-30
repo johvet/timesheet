@@ -31,12 +31,8 @@ describe EntriesController do
       delete("/entries/1").should route_to("entries#destroy", :id => "1")
     end
 
-    it "routes to #start" do
-      put("/entries/1/start").should route_to("entries#start", :id => "1")
-    end
-
-    it "routes to #stop" do
-      put("/entries/1/stop").should route_to("entries#stop", :id => "1")
+    it "routes to #toggle" do
+      put("/entries/1/toggle").should route_to("entries#toggle", :id => "1")
     end
   end
 end
