@@ -1,21 +1,20 @@
-%h1 Listing customers
+%h1= I18n.t("customers.listing")
 
-%table.table.table-striped
+%table.table.table-striped.table-hover
   %tr
-    %th Name
-    %th Comment
-    %th
-    %th
+    %th= I18n.t("activerecord.attributes.customer.name")
+    %th= I18n.t("activerecord.attributes.customer.comment")
     %th
 
   - @customers.each do |customer|
     %tr
       %td= customer.name
       %td= customer.comment
-      %td= link_to 'Show', customer
-      %td= link_to 'Edit', edit_customer_path(customer)
-      %td= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' }
+      %td.actions
+        = link_to edit_customer_path(customer) do
+          %i.icon.icon-pencil
+        = link_to customer, method: :delete, data: { confirm: 'Are you sure?' } do
+          %i.icon.icon-remove
 
-%br
-
-= link_to 'New Customer', new_customer_path, :class => "btn btn-primary"
+.form-actions
+  = link_to I18n.t("customers.new"), new_customer_path, :class => "btn btn-primary"

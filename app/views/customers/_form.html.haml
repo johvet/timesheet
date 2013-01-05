@@ -10,5 +10,5 @@
     .controls
       = f.text_area :comment, :class => "input-xxlarge", :rows => 4, :cols => 80
   .form-actions
-    = f.submit 'Save', :class => "btn btn-primary"
-    = link_to "Back", customers_path, :class => "btn"
+    = f.submit :class => "btn btn-primary"
+    = link_to I18n.t(:back), customers_path, :class => "btn"

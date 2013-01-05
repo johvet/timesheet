@@ -1,0 +1,43 @@
+- unless @results.nil?
+  - unless @results.empty?
+    %table.table.table-striped.table-condensed
+      %tr
+        %th Date
+        %th Action
+        %th Chargeable
+        %th Time
+
+      - grand_total = 0
+      - @results.sort.each do |edate, entries|
+        - lump_sum = 0
+        - entries.each do |entry|
+          - lump_sum += entry.duration
+          - grand_total += entry.duration
+
+          %tr
+            %td
+              = link_to entry.executed_on.to_s(:iso), entries_path(date: entry.executed_on.to_s(:iso))
+
+            %td
+              = "#{entry.project.customer.name} / #{entry.project.title}"
+              = entry.description
+            %td
+              = entry.activity.chargeable.to_s
+            %td
+              = entry.string_duration
+        - if entries.count > 1 && lump_sum > 0
+          %tr.sub_total
+            %td
+            %td
+            %td
+            %td.sum
+              = lump_sum.to_time
+
+      %tr.grand-total
+        %td
+        %td
+        %td
+        %td.grand
+          = grand_total.to_time
+  - else
+    = I18n.t('reports.no_match')

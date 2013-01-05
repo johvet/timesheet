@@ -46,6 +46,23 @@ describe "Entries" do
       page.find("#entry_#{@entry.id} .toggle").click
       page.should have_no_css('.ticker.ticking')
     end
+
+    it "should create a new entry", :js => true do
+      before = Entry.count
+      visit new_entry_path()
+      select(@project.title, from: 'Project')
+      select(@activity.name, from: 'Activity')
+      fill_in "Duration", with: "00:10:00"
+      click_on "Create Entry"
+
+      Entry.count.should eql(before + 1)
+      page.should have_content("Entry was successfully created")
+      rec = Entry.last
+      rec.duration.should eql(600)
+      rec.project.should eql(@project)
+      rec.activity.should eql(@activity)
+    end
+
   end
 
 end

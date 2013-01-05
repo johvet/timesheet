@@ -1,7 +1,9 @@
 - if form_errors.errors.any?
   #error_explanation.alert.alert-error
     %button.close{:data => {:dismiss => "alert"}} &times;
-    %b= "#{pluralize(form_errors.errors.count, "error")} prohibited this customer from being saved:"
+    %b
+      - key = form_errors.errors.count == 1 ? 'one' : 'other'
+      = I18n.t("activerecord.errors.template.header.#{key}", model: form_errors.class.model_name.human, count: form_errors.errors.count)
     %ul
       - form_errors.errors.full_messages.each do |msg|
         %li= msg

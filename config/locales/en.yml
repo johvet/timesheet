@@ -2,8 +2,47 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  date:
+    today: today
+    yesterday: yesterday
+    day_before_yesterday: the day before yesterday
+    tomorrow: tomorrow
+    day_after_tomorrow: the day after tomorrow
+  activerecord:
+    flash:
+      create: "%{model} was successfully created."
+      update: "%{model} was successfully updated."
+      delete: "%{model} was successfully deleted."
   main_navigation:
+    sheets: "Entries"
+    reports: "Reports"
     customers: "Customers"
     projects: "Projects"
     activities: "Activities"
+  form:
+    select:
+      all: "All"
+      oh_yes: "Yes"
+      oh_no: "No"
+  reports:
+    no_match: "Your search did not match any records"
+    filter:
+      period:
+        all: "All"
+        today: "Today"
+        yesterday: "Yesterday"
+        this_week: "This Week"
+        last_week: "Last Week"
+        this_month: "This Month"
+        last_month: "Last Month"
+        last_but_one_month: "Last But One Month"
+        last_but_two_months: "Last But Two Months"
+  download:
+    pdf: "Generate PDF"
+  entries:
+    listing: "Entries for %{date}"
+    empty: "There are no entries on file for this date yet."
+  customers:
+    listing: "Listing Customers"
+    new: "New Customer"
+    edit: "Edit Customer"

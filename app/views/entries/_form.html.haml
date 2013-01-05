@@ -6,7 +6,7 @@
     = f.association :activity, :collection => current_user.activities, :input_html => {:class => "input-xxlarge"}
     = f.input :executed_on, :input_html => {:class => "input-medium"}
     = f.input :description, :input_html => {:class => "input-xxlarge", :rows => 5, :cols => 80}
-    = f.input :string_duration
+    = f.input :string_duration, :label => "Duration"
 
   .form-actions
     = f.button :submit
