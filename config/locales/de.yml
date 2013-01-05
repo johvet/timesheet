@@ -2,7 +2,62 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 de:
+  date:
+    today: "heute"
+    yesterday: gestern
+    day_before_yesterday: vorgestern
+    tomorrow: morgen
+    day_after_tomorrow: übermorgen
+  activerecord:
+    models:
+      entry: "Eintrag"
+      project: "Projekt"
+      activity: "Arbeitsgang"
+      customer: "Kunde"
+    attributes:
+      customer:
+        name: "Name"
+        comment: "Bemerkung"
+    errors:
+      template:
+        header:
+          one:   "Der folgende Fehler verhindert das Speichern:"
+          other: "Die folgenden Fehler verhindern das Speichern:"
+    flash:
+      create: "%{model} wurde erfolgreich erstellt."
+      update: "%{model} wurde erfolgreich aktualisiert."
+      delete: "%{model} wurde erfolgreich gelöscht."
+  back: Zurück
   main_navigation:
+    sheets: "Zeiteinträge"
+    reports: "Berichte"
     customers: "Kunden"
     projects: "Projekte"
     activities: "Leistungen"
+  form:
+    select:
+      all: "Alle"
+      oh_yes: "Ja"
+      oh_no: "Nein"
+  reports:
+    no_match: "Ihre Suche lieferte leider kein Ergebnis"
+    filter:
+      period:
+        all: "Alle"
+        today: "Heute"
+        yesterday: "Gestern"
+        this_week: "Diese Woche"
+        last_week: "Letzte Woche"
+        this_month: "Dieser Monat"
+        last_month: "Letzter Monat"
+        last_but_one_month: "Vorletzter Monat"
+        last_but_two_months: "Vorvorletzter Monat"
+  download:
+    pdf: "PDF erstellen"
+  entries:
+    listing: "Einträge für %{date}"
+    empty: "Für diesen Tag liegen noch keine Einträge vor"
+  customers:
+    listing: "Liste der Kunden"
+    new: "Neuer Kunde"
+    edit: "Kunde bearbeiten"

@@ -1,42 +1,43 @@
 %h1
-  Listing entries for
-  = @date.to_s
+  = I18n.t('entries.listing', date: date_in_words(@date))
 
 .row
   .span9
-    %table.table.table-striped.entries
-      %tr
-        %th Entry
-        %th Time
-        %th.actions Actions
+    .control-group
+      = link_to 'New Entry', new_entry_path, :class => "btn btn-primary", :id => "new-entry"
 
-      - @entries.each do |entry|
+    - if @entries.empty?
+      .empty= I18n.t('entries.empty')
+    - else
+      %table.table.table-striped.entries.table-condensed.table-hover
         %tr
-          %td
-            = entry.project.customer.name
-            /
-            = entry.project.title
-            /
-            = entry.activity.name
-            .description
-              = entry.description
-          %td
-            %span.ticker{class: "#{entry.active? ? 'ticking' : ''}", data: {id: entry.id, current: entry.total_duration}}
-              = entry.total_duration.to_time
+          %th Entry
+          %th Time
+          %th.actions Actions
 
-          %td.actions
-            = render :partial => "entry_time", :object => entry
+        - @entries.each do |entry|
+          %tr
+            %td
+              = entry.project.customer.name
+              /
+              = entry.project.title
+              /
+              = entry.activity.name
+              .description
+                = entry.description
+            %td
+              %span.ticker{class: "#{entry.active? ? 'ticking' : ''}", data: {id: entry.id, current: entry.total_duration}}
+                = entry.total_duration.to_time
 
-            = link_to edit_entry_path(entry) do
-              %i.icon.icon-pencil
-            = link_to entry, method: :delete, data: { confirm: 'Are you sure?' } do
-              %i.icon.icon-remove
+            %td.actions
+              = render :partial => "entry_time", :object => entry
+
+              = link_to edit_entry_path(entry) do
+                %i.icon.icon-pencil
+              = link_to entry, method: :delete, data: { confirm: 'Are you sure?' } do
+                %i.icon.icon-remove
+
+
 
   .span3
     #datepicker{data: {url: "#{entries_path}", current: "#{@date.to_s(:iso)}"}}
-
-
-
-.row
-  .span12
-    = link_to 'New Entry', new_entry_path, :class => "btn btn-primary", :id => "new-entry"

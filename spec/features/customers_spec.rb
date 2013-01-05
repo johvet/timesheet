@@ -11,7 +11,7 @@ describe "Customers" do
 
       # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
       visit customers_path
-      page.should have_content('Listing customers')
+      page.should have_content('Listing Customers')
     end
   end
 end
