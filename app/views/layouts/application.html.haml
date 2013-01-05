@@ -26,8 +26,8 @@
           .navbar-content
             - if user_signed_in?
               %ul.nav
-                %li= link_to "Sheets", entries_path
-                %li= link_to "Reports", "/path2"
+                %li= link_to I18n.t('main_navigation.sheets'), entries_path
+                %li= link_to I18n.t('main_navigation.reports'), reports_path
                 %li.divider-vertical
                 %li.dropdown
                   %a.dropdown-toggle{href: "#", data: {toggle: "dropdown"}}

@@ -1,0 +1,23 @@
+%h1 Reports
+
+= form_tag reports_path, id: "filter", remote: true, method: :get do
+  .row
+    .span3
+      %label Period
+      = select_tag :filter_period, options_for_select(period_filter_options, @filter[:filter_period]), class: "filter period"
+    .span3
+      %label Customer
+      = select_tag :filter_customer, options_for_select([[I18n.t('form.select.all'), '']]) + options_from_collection_for_select(@customers, :id, :name), selected: @filter[:filter_customer], class: "filter customer"
+    .span3
+      %label Project
+      = select_tag :filter_project, options_for_select([[I18n.t('form.select.all'), '']]) + options_from_collection_for_select(@projects, :id, :title), selected: @filter[:filter_project], class: "filter project"
+    .span3
+      %label Chargeable
+      = select_tag :filter_chargeable, options_for_select([[I18n.t('form.select.all'), ''], [I18n.t('form.select.oh_yes'), 'yes'], [I18n.t('form.select.oh_no'), 'no']], selected: @filter[:filter_chargeable]), class: "filter filter_chargeable"
+      %a.btn.btn-primary.pdf-download= I18n.t('download.pdf')
+
+= form_tag reports_path(format: :pdf), id: "download-form", method: :get, target: "_blank" do
+  %fieldset
+
+#search-results
+  = render :partial => "results", :object => @results

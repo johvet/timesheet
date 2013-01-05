@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
+gem 'rails-i18n'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -11,6 +12,7 @@ gem 'devise'
 gem 'haml-rails'
 gem 'simple_form'
 gem 'gon'
+gem 'prawn'
 
 # Gems used only for assets and not required
 # in production environments by default.

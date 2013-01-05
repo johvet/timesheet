@@ -12,6 +12,8 @@ Timesheet::Application.routes.draw do
     end
   end
 
+  resources :reports, :only => [:index]
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

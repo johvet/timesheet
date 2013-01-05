@@ -15,3 +15,4 @@
 //= require jquery.ui.all
 //= require twitter/bootstrap
 //= require_tree .
+//= require spinner
