@@ -9,6 +9,7 @@ gem 'rails-i18n'
 gem 'sqlite3'
 
 gem 'devise'
+gem 'devise-i18n'
 gem 'haml-rails'
 gem 'simple_form'
 gem 'gon'

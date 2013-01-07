@@ -39,13 +39,13 @@
                     %li= link_to I18n.t('main_navigation.activities'), activities_path
 
             .pull-right
-              %ul.nav
-                %li
-                  - if user_signed_in?
+              - if user_signed_in?
+                %ul.nav
+                  %li
                     = link_to destroy_user_session_path, :method => :delete do
                       Logout #{current_user.email}
-                  - else
-                    = link_to "Sign In", new_user_session_path
+              - else
+                = render :partial => "shared/nav_sign_in"
 
     .container.main
       = bootstrap_flash

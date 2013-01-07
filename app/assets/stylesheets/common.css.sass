@@ -9,3 +9,30 @@ table
         text-decoration: none
         &:hover
           text-decoration: none
+
+@mixin clearfix
+  *zoom: 1
+  &:before,
+  &:after
+    display: table
+    content: ""
+    // Fixes Opera/contenteditable bug:
+    // http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952
+    line-height: 0
+
+  &:after
+    clear: both
+
+.form-actions
+  &.no-border
+    border-top: none
+
+.devise-links
+  margin: 20px 0 0 0
+  padding: 0
+  list-style-type: none
+  @include clearfix()
+
+  li
+    float: left
+    padding-right: 15px

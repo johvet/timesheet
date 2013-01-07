@@ -18,6 +18,9 @@ de:
       customer:
         name: "Name"
         comment: "Bemerkung"
+      user:
+        password: Kennwort
+        remember_me: "Auf diesem Computer an mich erinnern"
     errors:
       template:
         header:
@@ -61,3 +64,7 @@ de:
     listing: "Liste der Kunden"
     new: "Neuer Kunde"
     edit: "Kunde bearbeiten"
+  user:
+    session:
+      header: "Melden Sie sich mit Ihren Daten an"
+      submit: "Anmelden"

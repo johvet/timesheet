@@ -13,6 +13,9 @@ en:
       create: "%{model} was successfully created."
       update: "%{model} was successfully updated."
       delete: "%{model} was successfully deleted."
+    attributes:
+      user:
+        remember_me: "Remember me"
   main_navigation:
     sheets: "Entries"
     reports: "Reports"
@@ -46,3 +49,7 @@ en:
     listing: "Listing Customers"
     new: "New Customer"
     edit: "Edit Customer"
+  user:
+    session:
+      header: "Sign in with your credentials"
+      submit: "Sign in"
