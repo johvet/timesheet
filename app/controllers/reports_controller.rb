@@ -3,6 +3,7 @@ class ReportsController < AuthenticatedController
     @filter = {}
     @customers = current_user.customers.order(:name)
     @projects = current_user.projects.order(:title)
+    date_filter = nil
 
     if is_filtered?
       if params[:filter_customer].present?
@@ -27,7 +28,7 @@ class ReportsController < AuthenticatedController
           @results = @results.where(:executed_on => date_filter[0]..date_filter[1])
         end
       end
-
+      @ungrouped = @results
       @results = @results.group_by { |entry| entry.executed_on.to_s(:iso) }
     end
 
@@ -35,7 +36,7 @@ class ReportsController < AuthenticatedController
       format.html
       format.js
       format.pdf do
-        pdf = TimesheetPdf.new
+        pdf = TimesheetPdf.new(@current_user, date_filter, @ungrouped)
         send_data pdf.render, filename: "stundenzettel.pdf",
                               type: "application/pdf",
                               disposition: "inline"

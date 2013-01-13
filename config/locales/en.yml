@@ -27,8 +27,13 @@ en:
       all: "All"
       oh_yes: "Yes"
       oh_no: "No"
+  back: Back
+  "yes": "Yes"
+  "no": "No"
   reports:
     no_match: "Your search did not match any records"
+    page: "Page"
+    page_of: "of"
     filter:
       period:
         all: "All"
@@ -40,6 +45,24 @@ en:
         last_month: "Last Month"
         last_but_one_month: "Last But One Month"
         last_but_two_months: "Last But Two Months"
+    timesheet:
+      title: "Timesheet"
+      overview:
+        title: "Overview"
+        user: "User"
+        time_range: "Period"
+        total_time: "Total time"
+        chargeable: "Chargeable time"
+        non_chargeable: "Non chargeable time"
+      activities:
+        title: "Activities"
+      details:
+        title: "Details"
+        date: "Date"
+        activity: "Activity"
+        comment: "Comment"
+        chargeable: "Charged"
+        duration: "Time"
   download:
     pdf: "Generate PDF"
   entries:

@@ -31,6 +31,8 @@ de:
       update: "%{model} wurde erfolgreich aktualisiert."
       delete: "%{model} wurde erfolgreich gelöscht."
   back: Zurück
+  "yes": "Ja"
+  "no": "Nein"
   main_navigation:
     sheets: "Zeiteinträge"
     reports: "Berichte"
@@ -44,6 +46,8 @@ de:
       oh_no: "Nein"
   reports:
     no_match: "Ihre Suche lieferte leider kein Ergebnis"
+    page: "Seite"
+    page_of: "von"
     filter:
       period:
         all: "Alle"
@@ -55,6 +59,24 @@ de:
         last_month: "Letzter Monat"
         last_but_one_month: "Vorletzter Monat"
         last_but_two_months: "Vorvorletzter Monat"
+    timesheet:
+      title: "Stundenzettel"
+      overview:
+        title: "Überblick"
+        user: "Bearbeiter"
+        time_range: "Zeitraum"
+        total_time: "Arbeitszeit gesamt"
+        chargeable: "Arbeitszeit verrechenbar"
+        non_chargeable: "Arbeitszeit nicht verrechenbar"
+      activities:
+        title: "Tätigkeiten"
+      details:
+        title: "Zeiten"
+        date: "Datum"
+        activity: "Tätigkeit"
+        comment: "Bemerkung"
+        chargeable: "Verr."
+        duration: "Zeit"
   download:
     pdf: "PDF erstellen"
   entries:
